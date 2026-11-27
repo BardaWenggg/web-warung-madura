@@ -26,17 +26,17 @@ Proyek UAS Mata Kuliah Dasar Pemrograman menggunakan **TypeScript** berbasis *Co
 ├── tsconfig.json     # Konfigurasi compiler TypeScript
 ├── package.json      # Informasi proyek dan dependensi (prompt-sync)
 ├── .gitignore        # Daftar file/folder yang diabaikan Git (node_modules, index.js)
-└── README.md         # Dokumentasi proyek dan panduan penggunaan
+└── README.md         # Dokumentasi proyek dan panduan penggunaan ```
 
 
 ## Cara Menjalankan Program
 1. Instal dependensi:
    ```bash
-   npm install
+   npm install```
 2. Kompilasi kode TypeScript (index.ts) ke JavaScript (index.js):
    ```bash 
-   npx tsc
+   npx tsc```
 3. Jalankan aplikasi kasir di terminal:
    ```bash
-   node index.js
+   node index.js```
 4. Pilih menu angka 0–5 sesuai kebutuhan (1 Cek Stok, 2 Cari Barang, 3 Transaksi Kasir, 4 Restock Barang, 5 Laporan Shift, 0 Keluar).
