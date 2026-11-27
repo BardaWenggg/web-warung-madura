@@ -45,7 +45,7 @@ function tampilkanDaftarBarang(data: Barang[]): void {
   console.log('------------------------------------------------------------------');
   for (let i = 0; i < data.length; i++) {
     const item = data[i];
-    const status = item.stok <= 5 ? '⚠️ STOK MENIPIS' : 'Aman';
+    const status = item.stok <= 5 ? ' STOK MENIPIS' : 'Aman';
     console.log(
       `${item.kode.padEnd(4)} | ${item.nama.padEnd(23)} | Rp${item.harga
         .toLocaleString('id-ID')
@@ -74,7 +74,7 @@ function cariBarangInteraktif(data: Barang[], kataKunci: string): void {
 
   console.log(`\n=== HASIL PENCARIAN: "${kataKunci}" ===`);
   if (hasil.length === 0) {
-    console.log('❌ Barang tidak ditemukan.');
+    console.log(' Barang tidak ditemukan.');
     return;
   }
 
@@ -106,18 +106,18 @@ function prosesTransaksi(dataBarang: Barang[], riwayat: Transaksi[]): void {
 
     const barangDitemukan = cariBarangByKode(dataBarang, kode);
     if (!barangDitemukan) {
-      console.log('❌ Kode barang tidak ditemukan! Silakan cek daftar barang.');
+      console.log(' Kode barang tidak ditemukan! Silakan cek daftar barang.');
       continue;
     }
 
     if (barangDitemukan.stok <= 0) {
-      console.log(`❌ Maaf, stok ${barangDitemukan.nama} sedang habis!`);
+      console.log(` Maaf, stok ${barangDitemukan.nama} sedang habis!`);
       continue;
     }
 
     const qtyInput = Number(prompt(`Jumlah beli (${barangDitemukan.nama} - Stok: ${barangDitemukan.stok}): `));
     if (isNaN(qtyInput) || qtyInput <= 0 || !Number.isInteger(qtyInput)) {
-      console.log('❌ Jumlah beli harus berupa angka bulat positif!');
+      console.log(' Jumlah beli harus berupa angka bulat positif!');
       continue;
     }
 
@@ -125,7 +125,7 @@ function prosesTransaksi(dataBarang: Barang[], riwayat: Transaksi[]): void {
     const totalQtyDiminta = (itemDiKeranjang ? itemDiKeranjang.jumlah : 0) + qtyInput;
 
     if (totalQtyDiminta > barangDitemukan.stok) {
-      console.log(`❌ Stok tidak mencukupi! Sisa stok tersedia: ${barangDitemukan.stok}`);
+      console.log(` Stok tidak mencukupi! Sisa stok tersedia: ${barangDitemukan.stok}`);
       continue;
     }
 
@@ -140,7 +140,7 @@ function prosesTransaksi(dataBarang: Barang[], riwayat: Transaksi[]): void {
       });
     }
 
-    console.log(`✅ Ditambahkan: ${barangDitemukan.nama} x${qtyInput}`);
+    console.log(` Ditambahkan: ${barangDitemukan.nama} x${qtyInput}`);
     const lanjut = prompt('Tambah barang lain? (y/n): ');
     if (lanjut.trim().toLowerCase() !== 'y') {
       tambahLagi = false;
@@ -148,7 +148,7 @@ function prosesTransaksi(dataBarang: Barang[], riwayat: Transaksi[]): void {
   }
 
   if (keranjang.length === 0) {
-    console.log('⚠️ Transaksi dibatalkan (keranjang kosong).');
+    console.log(' Transaksi dibatalkan (keranjang kosong).');
     return;
   }
 
@@ -159,7 +159,7 @@ function prosesTransaksi(dataBarang: Barang[], riwayat: Transaksi[]): void {
   while (true) {
     uangDiterima = Number(prompt('Masukkan Uang Pembayaran (Rp): '));
     if (isNaN(uangDiterima) || uangDiterima < totalBayar) {
-      console.log(`❌ Uang tidak valid atau kurang! Minimal bayar Rp${totalBayar.toLocaleString('id-ID')}`);
+      console.log(` Uang tidak valid atau kurang! Minimal bayar Rp${totalBayar.toLocaleString('id-ID')}`);
     } else {
       break;
     }
@@ -202,18 +202,18 @@ function tambahStokBarang(dataBarang: Barang[]): void {
   const barang = cariBarangByKode(dataBarang, kode);
 
   if (!barang) {
-    console.log('❌ Kode barang tidak ditemukan.');
+    console.log(' Kode barang tidak ditemukan.');
     return;
   }
 
   const tambahan = Number(prompt(`Stok saat ini (${barang.nama}): ${barang.stok}. Tambah berapa? `));
   if (isNaN(tambahan) || tambahan <= 0 || !Number.isInteger(tambahan)) {
-    console.log('❌ Jumlah tambahan stok harus angka bulat positif.');
+    console.log(' Jumlah tambahan stok harus angka bulat positif.');
     return;
   }
 
   barang.stok += tambahan;
-  console.log(`✅ Stok ${barang.nama} berhasil diperbarui menjadi ${barang.stok}.`);
+  console.log(` Stok ${barang.nama} berhasil diperbarui menjadi ${barang.stok}.`);
 }
 
 // Fungsi 7: Laporan Omzet Shift
@@ -273,7 +273,7 @@ function main(): void {
         berjalan = false;
         break;
       default:
-        console.log('❌ Pilihan menu tidak valid. Masukkan angka 0-5.');
+        console.log(' Pilihan menu tidak valid. Masukkan angka 0-5.');
     }
   }
 }
